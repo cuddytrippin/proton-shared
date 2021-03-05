@@ -2,7 +2,7 @@ import { OpenPGPSignature } from 'pmcrypto';
 import { VcalAttendeeProperty, VcalAttendeePropertyParameters } from '../interfaces/calendar/VcalModel';
 import { ATTENDEE_STATUS_API } from './constants';
 
-export enum ACCESS_LEVEL {
+export enum AccessLevel {
     Limited = 0,
     Full = 1,
 }
