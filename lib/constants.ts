@@ -628,14 +628,16 @@ export enum PAYMENT_TOKEN_STATUS {
     STATUS_NOT_SUPPORTED = 4,
 }
 
-export enum PAYMENT_METHOD_TYPES {
-    CARD = 'card',
-    PAYPAL = 'paypal',
-    PAYPAL_CREDIT = 'paypal-credit',
-    BITCOIN = 'bitcoin',
-    CASH = 'cash',
-    TOKEN = 'token',
-}
+export const PAYMENT_METHOD_TYPES = {
+    CARD: 'card',
+    PAYPAL: 'paypal',
+    PAYPAL_CREDIT: 'paypal-credit',
+    BITCOIN: 'bitcoin',
+    CASH: 'cash',
+    TOKEN: 'token',
+};
+
+export type PAYMENT_METHOD_TYPE = string;
 
 export enum INVITE_TYPES {
     MAIL = 1,
