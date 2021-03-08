@@ -16,10 +16,10 @@ const getRawValues = (property: any): string[] => {
 /**
  * Get the value of an ICAL property
  *
- * @return currently an array for the field adr, a string otherwise
+ * @return currently an array for the fields adr and categories, a string otherwise
  */
-export const getValue = (property: any): string | string[] => {
-    const [value] = getRawValues(property).map((val: string | string[] | Date) => {
+export const getValue = (property: any, field: string): string | string[] => {
+    const values = getRawValues(property).map((val: string | string[] | Date) => {
         // adr
         if (Array.isArray(val)) {
             return val;
@@ -32,8 +32,13 @@ export const getValue = (property: any): string | string[] => {
         // date
         return val.toString();
     });
-
-    return value;
+    if (field === 'categories') {
+        // the ICAL library will parse item1.CATEGORIES:cat1,cat2 with value ['cat1,cat2'], but we expect ['cat1', 'cat2']
+        const flatValues = values.flat();
+        const splitValues = flatValues.map((value) => value.split(','));
+        return splitValues.flat();
+    }
+    return values[0];
 };
 
 /**
